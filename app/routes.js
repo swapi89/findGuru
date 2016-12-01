@@ -1,19 +1,21 @@
 // app/routes.js
-var User            = require('../app/models/user');
+var User = require('../app/models/user');
+var databaseController = require('../app/controllers/databaseController');
 module.exports = function(app, passport) {
 
     // =====================================
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function(req, res) {
-        User.find(function(err, docs){
-            console.log(docs);
-            //res.json(docs);
+        var allUsersPrmoise = databaseController.findAllUsers();
+        allUsersPrmoise.then(function(result){
             res.render('index.ejs', {
-                users : docs // get the user out of session and pass to template
+                users : result // get the user out of session and pass to template
             }); // load the index.ejs file
+        })
+        .catch(function(reason){
+            console.log('Handle rejected promise ('+reason+') here.');
         });
-        
     });
 
     // =====================================
