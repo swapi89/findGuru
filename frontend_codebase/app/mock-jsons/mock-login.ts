@@ -1,6 +1,14 @@
-// 
-// export const HEROES: Hero[] = [
-//   {id: 01, email: 'sumodh@sapient.com',password:'hello'},
-//   {id: 02, email: 'sumodh1@sapient.com',password:'hello'},
-//   {id: 03, email: 'sumodh2@sapient.com',password:'hello'}
-// ];
+
+
+export class Login {
+  id : number;
+  email : string;
+  password: string;
+}
+
+
+export const LOGIN: Login[] = [
+  {id: 1, email: 'sumodh@sapient.com',password:'hello'},
+  {id: 2, email: 'sumodh1@sapient.com',password:'hello'},
+  {id: 3, email: 'sumodh2@sapient.com',password:'hello'}
+];

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService }   from '../services/login.service';
+import { Login } from '../mock-jsons/mock-login';
 
 @Component({
   selector: 'login',
@@ -8,7 +9,7 @@ import { LoginService }   from '../services/login.service';
 
 export class LoginComponent  {
 
-  loginObj : Object;
+  loginObj : Login;
   userEmail : string;
   userPassword : string;
   results : Array<any> = [];
@@ -21,7 +22,8 @@ export class LoginComponent  {
     alert("signup page will trigger");
   }
 
-  onSubmit = function() {
+  onSubmit = function(e : any) {
+    e.preventDefault();
 
     //TODO : call the login service
   //  LoginService.getLogin();
@@ -29,6 +31,14 @@ export class LoginComponent  {
     //                 .subscribe(
     //                  response => this.results,
     //                  errorData =>  this.errorMessage);
+
+    this.loginObj = this.LoginService.getLoginData();
+
+    if(this.loginObj.email === this.userEmail && this.loginObj.password === this.userPassword) {
+      alert("login successful");
+    } else{
+      alert("login not successful");
+    }
   }
   constructor(private service: LoginService){
     this.messageText = "Bad message";

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-// import { Http } from '@angular/http';
 import { Logger } from '../services/logger.service';
-import { Observable }     from 'rxjs/Observable';
+import { Login, LOGIN } from '../mock-jsons/mock-login';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -9,14 +8,16 @@ import 'rxjs/add/operator/toPromise';
 export class LoginService {
 
   private loginUrl : String = 'api/login';  // URL to web api
-  public results : Array<any>;
+  // public results : Array<any>;
 
-    constructor(
-      private logger: Logger,
-      // private http: Http
+    // constructor(
+    //   private logger: Logger
+    //
+    // ){}
 
-    ){}
-
+      getLoginData() : Login[] {
+        return LOGIN;
+      }
   //   getLoginData ():  Observable<results[]>{
   //   return this.http.get(this.loginUrl)
   //                   .map(this.extractData)
