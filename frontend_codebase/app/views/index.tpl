@@ -10,7 +10,12 @@
   </div>
   <div>
       <div class="row">
-
+        <p *ngFor="#user of users">
+          <span class="name">{{user.name}}</span>
+          <span class="email">{{user.email}}</span>
+          <span class="mobile">{{user.mobile}}</span>
+          <span class="subject">{{user.subject}}</span>
+        </p>
           <!-- LOCAL INFORMATION -->
 
           <!-- <% for(var i=0; i < users.length; i++) { %>
