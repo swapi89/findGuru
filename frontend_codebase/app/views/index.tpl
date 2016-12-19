@@ -10,7 +10,7 @@
   </div>
   <div>
       <div class="row">
-        <p *ngFor="#user of users">
+        <p *ngFor="let user of users;">
           <span class="name">{{user.name}}</span>
           <span class="email">{{user.email}}</span>
           <span class="mobile">{{user.mobile}}</span>
