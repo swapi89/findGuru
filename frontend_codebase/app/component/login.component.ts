@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService }   from '../services/login.service';
 import { Login } from '../mock-jsons/mock-login';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -10,20 +11,22 @@ import { Login } from '../mock-jsons/mock-login';
 export class LoginComponent  {
 
   loginObj : Login;
+  resultData :  Login;
   userEmail : string;
   userPassword : string;
   results : Array<any> = [];
   error : Object = {};
+  count : number = 0;
 
    messageText : string;
    messageLength : number;
 
   goToSignup = function() {
-    alert("signup page will trigger");
+    this.router.navigate(['/signUp']);
   }
 
-  onSubmit = function(e : any) {
-    e.preventDefault();
+  onSubmit = function() {
+
 
     //TODO : call the login service
   //  LoginService.getLogin();
@@ -32,21 +35,34 @@ export class LoginComponent  {
     //                  response => this.results,
     //                  errorData =>  this.errorMessage);
 
-    this.loginObj = this.LoginService.getLoginData();
+    if(this.userEmail && this.userPassword) {
+      this.resultData = this.service.getLoginData({'email':this.userEmail , 'password' : this.userPassword});
+      this.router.navigate(['/edit']);
 
-    if(this.loginObj.email === this.userEmail && this.loginObj.password === this.userPassword) {
-      alert("login successful");
-    } else{
-      alert("login not successful");
+    } else {
+      this.messageText = "Please enter values!";
+      this.messageLength = 1;
     }
+
+    // while(this.count in this.resultData.length){
+    //
+    //   console.log(this.resultData[this.count]);
+    //   if(this.resultData[this.count].email === this.userEmail && this.resultData[this.count].password === this.userPassword) {
+    //     alert("login successful");
+    //   } else{
+    //     alert("login not successful");
+    //   }
+    //    this.count++;
+    // }
+
   }
-  constructor(private service: LoginService){
+  constructor(private service: LoginService , private router : Router){
     this.messageText = "Bad message";
     this.messageLength = 0;
     this.userEmail = "";
     this.userPassword = "";
-    this.results = [];
     this.error = "";
+
   }
 
 

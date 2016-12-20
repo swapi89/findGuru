@@ -1,46 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Logger } from '../services/logger.service';
 import { Login, LOGIN } from '../mock-jsons/mock-login';
+import { Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class LoginService {
 
-  private loginUrl : String = 'api/login';  // URL to web api
-  // public results : Array<any>;
+  private loginUrl = 'https://jsonplaceholder.typicode.com';  // URL to web api
 
-    // constructor(
-    //   private logger: Logger
-    //
-    // ){}
+  constructor(private http: Http) { }
 
-      getLoginData() : Login[] {
-        return LOGIN;
-      }
-  //   getLoginData ():  Observable<results[]>{
-  //   return this.http.get(this.loginUrl)
-  //                   .map(this.extractData)
-  //                   .catch(this.handleError);
+  // TODO : if you want to return mock json data
+  // getLoginData() : Login[] {
+  //   return LOGIN;
   // }
 
- //  private extractData(res: Response) {
- //   let body = res.json();
- //   return body.data || { };
- // }
+  getLoginData(loginObj :  any): Promise<any> {
+    return this.http.get(this.loginUrl + '/posts/1')
+    .toPromise()
+    .then(response => response.json().data)
+    .catch(this.handleError);
+  }
 
-//  private handleError (error: Response | any) {
-//   // In a real world app, we might use a remote logging infrastructure
-//   let errMsg: string;
-//   if (error instanceof Response) {
-//     const body = error.json() || '';
-//     const err = body.error || JSON.stringify(body);
-//     errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-//   } else {
-//     errMsg = error.message ? error.message : error.toString();
-//   }
-//   console.error(errMsg);
-//   return Observable.throw(errMsg);
-// }
-
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
+  }
 }
