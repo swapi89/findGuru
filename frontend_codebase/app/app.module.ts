@@ -14,16 +14,18 @@ import { IndexComponent }  from './component/index.component';
 import { EditComponent }  from './component/edit.component';
 import { SignUpComponent }  from './component/signup.component';
 import { ProfileComponent }  from './component/profile.component';
+import { HomeComponent }  from './component/home.component';
 
 //SERVICES
  import { LoginService }   from './services/login.service';
+ import { StateService }   from './services/state.service';
  import { Logger }   from './services/logger.service';
 
 
 @NgModule({
   imports:      [ BrowserModule , HttpModule, FormsModule ,  AppRoutingModule ],
-  declarations: [ AppComponent , LoginComponent, IndexComponent, EditComponent, SignUpComponent, ProfileComponent ],
+  declarations: [ AppComponent , LoginComponent, IndexComponent, EditComponent, SignUpComponent, ProfileComponent, HomeComponent ],
   bootstrap:    [ AppComponent ],
-  providers:    [ Logger, LoginService]
+  providers:    [ Logger, LoginService, StateService]
 })
 export class AppModule { }
