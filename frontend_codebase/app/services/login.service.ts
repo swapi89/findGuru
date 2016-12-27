@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Logger } from '../services/logger.service';
 import { Login, LOGIN } from '../mock-jsons/mock-login';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class LoginService {
 
-  private loginUrl = 'https://jsonplaceholder.typicode.com';  // URL to web api
+  private loginUrl = 'http://localhost:7007/login';  // URL to web api
 
   constructor(private http: Http) { }
 
@@ -18,9 +18,13 @@ export class LoginService {
   // }
 
   getLoginData(loginObj :  any): Promise<any> {
-    return this.http.get(this.loginUrl + '/posts/1')
+    let headers = new Headers({ 'Content-Type': 'text/plain' });
+    let options = new RequestOptions({ headers: headers });
+
+
+    return this.http.post(this.loginUrl,loginObj)
     .toPromise()
-    .then(response => response.json().data)
+    .then(response => response.json())
     .catch(this.handleError);
   }
 

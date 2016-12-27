@@ -8,15 +8,15 @@ import {Router} from '@angular/router';
   templateUrl: 'app/views/login.tpl'
 })
 
-export class LoginComponent  {
+export class LoginComponent   {
 
   loginObj : Login;
-  resultData :  Login;
   userEmail : string;
   userPassword : string;
   results : Array<any> = [];
-  error : Object = {};
+  isSelected : Boolean;
   count : number = 0;
+  self : any;
 
    messageText : string;
    messageLength : number;
@@ -27,41 +27,29 @@ export class LoginComponent  {
 
   onSubmit = function() {
 
-
-    //TODO : call the login service
-  //  LoginService.getLogin();
-    // this.LoginService.getLoginData()
-    //                 .subscribe(
-    //                  response => this.results,
-    //                  errorData =>  this.errorMessage);
-
     if(this.userEmail && this.userPassword) {
-      this.resultData = this.service.getLoginData({'email':this.userEmail , 'password' : this.userPassword});
-      this.router.navigate(['/edit']);
+     this.service.getLoginData({'email':this.userEmail,'password':this.userPassword}).then(dataFetched => {
+        this.messageLength =  1;
+        this.messageText =  dataFetched.success ? dataFetched.data.msg : dataFetched.data ;
+        this.isSelected = dataFetched.success;
+        if( dataFetched.success )
+         this.router.navigate(['/edit',dataFetched.data.username]);
+     });
 
     } else {
       this.messageText = "Please enter values!";
       this.messageLength = 1;
+      this.isSelected = false;
     }
-
-    // while(this.count in this.resultData.length){
-    //
-    //   console.log(this.resultData[this.count]);
-    //   if(this.resultData[this.count].email === this.userEmail && this.resultData[this.count].password === this.userPassword) {
-    //     alert("login successful");
-    //   } else{
-    //     alert("login not successful");
-    //   }
-    //    this.count++;
-    // }
 
   }
   constructor(private service: LoginService , private router : Router){
+    var self = this;
     this.messageText = "Bad message";
     this.messageLength = 0;
     this.userEmail = "";
     this.userPassword = "";
-    this.error = "";
+    this.isSelected = false;
 
   }
 

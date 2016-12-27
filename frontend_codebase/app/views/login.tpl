@@ -2,10 +2,10 @@
 
   <div class="col-sm-6 col-sm-offset-3">
 
-      <h1><span class="fa fa-sign-in"></span> Login</h1>
+      <h1>Login</h1>
 
       <!-- show any messages that come back with authentication -->
-          <div  *ngIf="messageLength > 0 " class="alert alert-danger">{{messageText}}</div>
+          <div  *ngIf="messageLength > 0 " class="alert" [ngClass] = "{ 'alert-success' : isSelected , 'alert-danger' : !isSelected}">{{messageText}}</div>
       <!-- LOGIN FORM -->
       <form>
           <div class="form-group">

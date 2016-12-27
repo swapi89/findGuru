@@ -1,16 +1,16 @@
 <div class="container" id="edit-view">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        <h1>Profile Page</h1><span><b>Welcome : </b> {{username}}</span>
+        <a routerLink="/login" class="btn btn-default btn-sm">Logout</a>
     </div>
 
     <div class="row">
 
         <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
+        <div class="col-sm-12">
             <div class="well">
-                <h3><span class="fa fa-user"></span> User Details</h3>
+                <h3> User Details</h3>
                 <h4>Please update your details to get more visibility</h4>
                 <!-- <form action="/edit" method="post">
                     <p>

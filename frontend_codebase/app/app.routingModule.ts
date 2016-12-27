@@ -9,7 +9,7 @@ import { ProfileComponent }  from './component/profile.component';
 const appRoutes: Routes = [
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'signUp', component: SignUpComponent },
-  { path: 'edit', component: EditComponent },
+  { path: 'edit/:username',  component: EditComponent },
   { path: 'login', component: LoginComponent },
   { path: '', component: LoginComponent }
 ];
