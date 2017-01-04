@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class StateService {
 
-  private stateListUrl = 'http://services.groupkt.com/state/get/IND/all';  // URL to web api
+  private stateListUrl = 'http://localhost:8080/';  // URL to web api
 
   constructor(private http: Http) { }
   getState(): Promise<any> {

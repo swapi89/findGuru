@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService }   from '../services/login.service';
-import { Login } from '../mock-jsons/mock-login';
+import { Login } from '../interface/login';
 import {Router} from '@angular/router';
 
 @Component({

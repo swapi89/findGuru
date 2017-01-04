@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Logger } from '../services/logger.service';
-import { Login, LOGIN } from '../mock-jsons/mock-login';
+// import { Login, LOGIN } from '../mock-jsons/mock-login';
+import { Login } from '../interface/login';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
