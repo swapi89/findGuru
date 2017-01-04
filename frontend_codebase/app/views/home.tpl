@@ -8,8 +8,7 @@
           <div class="col-sm-3">
             <label for="state">State</label>
             <select name="state">
-              <option value="1">1</option>
-              <option value="2">2</option>
+              <option *ngFor="let state of stateList" [value]="state.abbr">{{state.name}}</option>
             </select>
           </div>
           <div class="col-sm-3">

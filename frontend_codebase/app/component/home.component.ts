@@ -7,17 +7,14 @@ import { StateService }   from '../services/state.service';
 })
 
 export class HomeComponent{
-  stateObj: State;
   resultData: any;
-  constructor(private stateService : StateService){
-  }
+  stateList: any;
+  constructor(private stateService : StateService){ }
 
-ngOnInit(){
+  ngOnInit(){
     this.stateService.getState().then(result => {
-    this.resultData = result;
-    console.log(this.resultData);
+    this.stateList = result.RestResponse.result;
   });
+  }
 
 }
-
-  }
