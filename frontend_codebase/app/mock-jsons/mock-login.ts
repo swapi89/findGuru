@@ -1,11 +1,4 @@
-
-
-export class Login {
-  id : number;
-  email : string;
-  password: string;
-}
-
+import { Login } from '../interface/login';
 
 export const LOGIN: Login[] = [
   {id: 1, email: 'sumodh@sapient.com',password:'hello'},

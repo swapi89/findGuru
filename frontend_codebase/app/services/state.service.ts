@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Logger } from '../services/logger.service';
-import { State } from '../component/state';
+import { State } from '../interface/state';
 import { Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';

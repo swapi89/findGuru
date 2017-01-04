@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { State } from '../component/state';
+import { State } from '../interface/state';
 import { StateService }   from '../services/state.service';
 @Component({
   selector: 'home',
@@ -7,7 +7,7 @@ import { StateService }   from '../services/state.service';
 })
 
 export class HomeComponent{
-  //stateObj: State;
+  stateObj: State;
   resultData: any;
   constructor(private stateService : StateService){
   }

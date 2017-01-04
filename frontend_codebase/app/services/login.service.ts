@@ -18,8 +18,8 @@ export class LoginService {
   // }
 
   getLoginData(loginObj :  any): Promise<any> {
-    let headers = new Headers({ 'Content-Type': 'text/plain' });
-    let options = new RequestOptions({ headers: headers });
+  //  let headers = new Headers({ 'Content-Type': 'text/plain' });
+  //  let options = new RequestOptions({ headers: headers });
 
 
     return this.http.post(this.loginUrl,loginObj)
